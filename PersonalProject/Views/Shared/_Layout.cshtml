@@ -12,7 +12,7 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 @*<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">PersonalProject</a>*@
-                <img width="64" height="64" src="~/images/Logo.png" />
+                <a asp-action="Index" asp-controller="Home"><img width="64" height="64" src="~/images/Logo.png" /></a>
                 <strong><font size="+3">Company Portal </font></strong>
                 @if (User.IsInRole("Admin"))
                 {

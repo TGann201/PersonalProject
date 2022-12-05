@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace PersonalProject.Controllers
 {
-    [Authorize(Roles = "Employer, Employee")]
+    [Authorize(Roles = "Employer, Employee, Admin")]
     public class HomeController : Controller
     {
         private readonly ApplicationDbContext applicationDbContext;
