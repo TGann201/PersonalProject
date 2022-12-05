@@ -1,0 +1,101 @@
+﻿@model PersonalProject.Models.Performance
+
+@{
+
+}
+
+<h2>Employee Review for @ViewBag.EmployeeName</h2>
+<p>For values, 1 is poor performance and 5 is exemplary performance.</p>
+<hr />
+@*@foreach (var item in Model)
+{*@
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="CreateEmployeeReview">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <h3>Ability to Learn</h3>
+                    <label asp-for="LearnValue" class="control-label"></label>
+                    <select asp-for="LearnValue" class="form-control">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                    <span asp-validation-for="LearnValue" class="text-danger"></span>
+
+                    <label asp-for="LearnNote" class="control-label"></label>
+                    <input asp-for="LearnNote" class="form-control" />
+                    <span asp-validation-for="LearnNote" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <h3>Adaptability</h3>
+                    <label asp-for="AdaptabilityValue" class="control-label"></label>
+                    <select asp-for="AdaptabilityValue" class="form-control">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                    <span asp-validation-for="AdaptabilityValue" class="text-danger"></span>
+
+                    <label asp-for="AdaptabilityNote" class="control-label"></label>
+                    <input asp-for="AdaptabilityNote" class="form-control" />
+                    <span asp-validation-for="AdaptabilityNote" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <h3>Attendance</h3>
+                    <label asp-for="AttendanceValue" class="control-label"></label>
+                    <select asp-for="AttendanceValue" class="form-control">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                    <span asp-validation-for="AttendanceValue" class="text-danger"></span>
+
+                    <label asp-for="AttendanceNote" class="control-label"></label>
+                    <input asp-for="AttendanceNote" class="form-control" />
+                    <span asp-validation-for="AttendanceNote" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <h3>Teamwork</h3>
+                    <label asp-for="TeamworkValue" class="control-label"></label>
+                    <select asp-for="TeamworkValue" class="form-control">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                    <span asp-validation-for="TeamworkValue" class="text-danger"></span>
+
+                    <label asp-for="TeamworkNote" class="control-label"></label>
+                    <input asp-for="TeamworkNote" class="form-control" />
+                    <span asp-validation-for="TeamworkNote" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+@*}*@
+<div>
+    <form asp-action="Index">
+        <div class="form-group">
+            <input type="submit" value="Back to Home" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

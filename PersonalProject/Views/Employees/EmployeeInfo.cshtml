@@ -1,0 +1,47 @@
+﻿@model IEnumerable<PersonalProject.Models.EmployeeInfoViewModel>
+
+@{
+    ViewData["Title"] = "Employee Information";
+}
+
+@if (Model == null)
+{
+    <h2>No Assigned Employer/Position</h2>
+}
+<div>
+    <h2>Information For @ViewBag.EmployeeName</h2>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Employer Name
+        </dt>
+        <dd class="col-sm-10">
+            @ViewBag.EmployerName
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Positions.PositionName)
+        </dt>
+        <dd class="col-sm-10">
+            @foreach (var item in Model)
+            {
+                @Html.DisplayFor(model => item.Positions.PositionName)
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Positions.Salary)
+        </dt>
+        <dd class="col-sm-10">
+            @foreach (var item in Model)
+            {
+                @Html.DisplayFor(model => item.Positions.Salary)
+            }
+        </dd>
+    </dl>
+</div>
+<div>
+    <form asp-action="Index" asp-controller="Home">
+        <div class="form-group">
+            <input type="submit" value="Back to Home" class="btn btn-primary" />
+        </div>
+    </form>
+</div>

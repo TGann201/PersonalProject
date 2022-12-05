@@ -1,0 +1,47 @@
+﻿@model PersonalProject.Models.Employee
+
+@{
+    ViewData["Title"] = "Employee Details";
+}
+
+<div>
+    <h2>Details For @ViewBag.Name</h2>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EmployerID)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EmployerID)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+    </dl>
+</div>
+<div>
+    @*<a asp-action="Edit" asp-route-id="@Model.EmployeeID">Edit</a> |*@
+    @if (User.IsInRole("Employer"))
+    {
+        <a asp-action="EmployeeList" asp-controller="Employers">Back to List</a>
+    }
+    @if (User.IsInRole("Employee"))
+    {
+        <a asp-action="Index">Back to Home</a>
+    }
+</div>

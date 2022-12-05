@@ -1,0 +1,40 @@
+﻿@model PersonalProject.Models.Employee
+
+@{
+
+}
+
+<h2>Assign Employee Position</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateAssignPosition">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="EmployeeID" class="control-label">Employee Assigned</label>
+                <select asp-for="EmployeeID" class="form-control" asp-items="@(new SelectList(Model.EmployeeList, "Value", "Text"))"></select>
+                <span asp-validation-for="EmployeeID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PositionID" class="control-label">Position Name</label>
+                <select asp-for="PositionID" class="form-control" asp-items="@(new SelectList(Model.PositionList, "Value", "Text"))"></select>
+                <span asp-validation-for="PositionID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <form asp-action="Index">
+        <div class="form-group">
+            <input type="submit" value="Back to Home" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

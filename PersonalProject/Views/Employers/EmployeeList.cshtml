@@ -1,0 +1,48 @@
+﻿@model IEnumerable<PersonalProject.Models.EmployeeListViewModel>
+
+@{
+    ViewData["Title"] = "Employee List";
+}
+
+@if (Model == null)
+{
+    <h2>No Assigned Employees</h2>
+}
+else
+{
+    ViewBag.Employee = "Employee";
+    <h2>Employees For @ViewBag.Name</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Employees.EmployeeID)</th>
+                <th>Patient Name</th>
+                <th>@Html.DisplayNameFor(model => model.Employees.Email)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var employee in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(model => employee.Employees.EmployeeID)</td>
+                    <td>@Html.DisplayFor(Model => employee.Employees.FirstName) @Html.DisplayFor(model => employee.Employees.LastName)</td>
+                    <td>@Html.DisplayFor(model => employee.Employees.Email)</td>
+                    <td>
+                        @*<a asp-action="Details" asp-controller="Employees" asp-route-id="@employee.Employees.EmployeeID">Details</a>*@
+                        <a asp-action="EmployerEmployeeInfo" asp-controller="Employees" asp-route-id="@employee.Employees.EmployeeID">Details</a> |
+                        <a asp-action="EmployerEmployeeSchedule" asp-controller="Employees" asp-route-id="@employee.Employees.EmployeeID">Schedule</a> |
+                        <a asp-action="EmployeeReview" asp-route-id="@employee.Employees.EmployeeID">Create Review</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div>
+        <form asp-action="Index">
+            <div class="form-group">
+                <input type="submit" value="Back to Home" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+}

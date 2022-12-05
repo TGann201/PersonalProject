@@ -1,0 +1,35 @@
+﻿@model PersonalProject.Models.Employee
+
+@{
+    ViewData["Title"] = "Employee Home";
+}
+
+<h2>Welcome @ViewBag.Name</h2>
+<br />
+<div class="text-left">
+    <form asp-action="CompanyNews" asp-controller="Home">
+        <div class="form-group">
+            <input type="submit" value="Company News/Information" class="btn btn-primary" />
+        </div>
+    </form>
+    <form asp-action="EmployeeInfo">
+        <div class="form-group">
+            <input type="submit" value="Position Information" class="btn btn-primary" />
+        </div>
+    </form>
+    <form asp-action="EmployeeSchedule">
+        <div class="form-group">
+            <input type="submit" value="Schedule Information" class="btn btn-primary" />
+        </div>
+    </form>
+    <form asp-action="ViewTimeOff">
+        <div class="form-group">
+            <input type="submit" value="View Time Off" class="btn btn-primary" />
+        </div>
+    </form>
+    <form asp-action="ViewReview">
+        <div class="form-group">
+            <input type="submit" value="View Performance Review" class="btn btn-primary" />
+        </div>
+    </form>
+</div>

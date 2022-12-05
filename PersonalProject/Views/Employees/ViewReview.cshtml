@@ -1,0 +1,114 @@
+﻿@model IEnumerable<PersonalProject.Models.PerformanceViewModel>
+
+@if (Model == null)
+{
+    <h2>No Employee Review Submitted By Employer</h2>
+}
+else
+{
+    <h2>Employee Review for @ViewBag.EmployeeName from @ViewBag.EmployerName</h2>
+    <br />
+    foreach (var item in Model)
+    {
+<div>
+    <h3>Ability to Learn</h3>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Performances.LearnValue)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => item.Performances.LearnValue)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Performances.LearnNote)
+        </dt>
+        <dd class="col-sm-10">
+            @if (item.Performances.LearnNote != null)
+            {
+                @Html.DisplayFor(model => item.Performances.LearnNote)
+            }
+            else
+            {
+                <span>(No Note Given)</span>
+            }
+        </dd>
+    </dl>
+
+    <h3>Adaptability</h3>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Performances.AdaptabilityValue)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => item.Performances.AdaptabilityValue)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Performances.AdaptabilityNote)
+        </dt>
+        <dd class="col-sm-10">
+            @if (item.Performances.AdaptabilityNote != null)
+            {
+                @Html.DisplayFor(model => item.Performances.AdaptabilityNote)
+            }
+            else
+            {
+                <span>(No Note Given)</span>
+            }
+        </dd>
+    </dl>
+
+    <h3>Attendance</h3>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Performances.AttendanceValue)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => item.Performances.AttendanceValue)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Performances.AttendanceNote)
+        </dt>
+        <dd class="col-sm-10">
+            @if (item.Performances.AttendanceNote != null)
+            {
+                @Html.DisplayFor(model => item.Performances.AttendanceNote)
+            }
+            else
+            {
+                <span>(No Note Given)</span>
+            }
+        </dd>
+    </dl>
+
+    <h3>Teamwork</h3>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Performances.TeamworkValue)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => item.Performances.TeamworkValue)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Performances.TeamworkNote)
+        </dt>
+        <dd class="col-sm-10">
+            @if (item.Performances.TeamworkNote != null)
+            {
+                @Html.DisplayFor(model => item.Performances.TeamworkNote)
+            }
+            else
+            {
+                <span>(No Note Given)</span>
+            }
+        </dd>
+    </dl>
+</div>
+    }
+}
+<div>
+    <form asp-action="Index">
+        <div class="form-group">
+            <input type="submit" value="Back to Home" class="btn btn-primary" />
+        </div>
+    </form>
+</div>

@@ -1,0 +1,48 @@
+﻿@model IEnumerable<PersonalProject.Models.TimeOffViewModel>
+
+@if (Model == null)
+{
+    <h2>No Time Off Requested</h2>
+}
+else
+{
+    <h2>Current Time Off for @ViewBag.EmployeeName</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.TimeOffs.Date)</th>
+                <th>@Html.DisplayNameFor(model => model.TimeOffs.Note)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var timeOff in Model)
+            {
+            <tr>
+                <td>@Html.DisplayFor(model => timeOff.TimeOffs.Date)</td>
+                @if (timeOff.TimeOffs.Note != null)
+                {
+                    <td>@Html.DisplayFor(Model => timeOff.TimeOffs.Note)</td>
+                }
+                else
+                {
+                    <td>(No Note Given)</td>
+                }
+
+            </tr>
+            }
+        </tbody>
+    </table>
+}
+<div>
+    <form asp-action="TakeTimeOff">
+        <div class="form-group">
+            <input type="submit" value="Request Time Off" class="btn btn-primary" />
+        </div>
+    </form>
+    <form asp-action="Index">
+        <div class="form-group">
+            <input type="submit" value="Back to Home" class="btn btn-primary" />
+        </div>
+    </form>
+</div>

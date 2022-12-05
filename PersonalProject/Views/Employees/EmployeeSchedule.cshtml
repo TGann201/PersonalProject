@@ -1,0 +1,56 @@
+﻿@model IEnumerable<PersonalProject.Models.EmployeeScheduleViewModel>
+
+@{
+    ViewData["Title"] = "Employee Schedule";
+}
+
+@if (Model == null)
+{
+    <h2>No Assigned Schedule</h2>
+}
+<div>
+    <h2>Information For @ViewBag.EmployeeName</h2>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Schedules.Shift)
+        </dt>
+        <dd class="col-sm-10">
+            @foreach (var item in Model)
+            {
+                @Html.DisplayFor(model => item.Schedules.Shift)
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Schedules.StartTime)
+        </dt>
+        <dd class="col-sm-10">
+            @foreach (var item in Model)
+            {
+                TimeSpan ts = item.Schedules.StartTime;
+                DateTime time = DateTime.Today + ts;
+                string StartTimeDisp = time.ToString("h:mm tt");
+                @StartTimeDisp
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Schedules.EndTime)
+        </dt>
+        <dd class="col-sm-10">
+            @foreach (var item in Model)
+            {
+                TimeSpan ts = item.Schedules.EndTime;
+                DateTime time = DateTime.Today + ts;
+                string EndTimeDisp = time.ToString("h:mm tt");
+                @EndTimeDisp
+            }
+        </dd>
+    </dl>
+</div>
+<div>
+    <form asp-action="Index" asp-controller="Home">
+        <div class="form-group">
+            <input type="submit" value="Back to Home" class="btn btn-primary" />
+        </div>
+    </form>
+</div>

@@ -1,0 +1,36 @@
+﻿@model IEnumerable<PersonalProject.Models.TimeOffViewModel>
+
+<h2>Employee Time Off for @ViewBag.EmployerName</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Employee Name</th>
+            <th>@Html.DisplayNameFor(model => model.TimeOffs.Date)</th>
+            <th>@Html.DisplayNameFor(model => model.TimeOffs.Note)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@Html.DisplayFor(model => item.Employees.FirstName)  @Html.DisplayFor(model => item.Employees.LastName)</td>
+            <td>@Html.DisplayFor(model => item.TimeOffs.Date)</td>
+            @if (item.TimeOffs.Note != null)
+            {
+                <td>@Html.DisplayFor(model => item.TimeOffs.Note)</td>
+            }
+            else
+                {
+                    <td>(No Note Given)</td>
+                }
+        </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <form asp-action="Index">
+        <div class="form-group">
+            <input type="submit" value="Back to Home" class="btn btn-primary" />
+        </div>
+    </form>
+</div>

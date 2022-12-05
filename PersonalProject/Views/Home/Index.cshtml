@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Company Information";
+}
+
+<div class="text-center">
+    <h2 class="display-4">Welcome to the Company</h2>
+    <p>View company news/information here.</p>
+</div>
+
+<div>
+    @if (User.IsInRole("Employer"))
+    {
+        <form asp-action="Index" asp-controller="Employer">
+            <div class="form-group">
+                <input type="submit" value="Back to Home" class="btn btn-primary" />
+            </div>
+        </form>
+    }
+    @if (User.IsInRole("Employee"))
+    {
+        <form asp-action="Index" asp-controller="Employee">
+            <div class="form-group">
+                <input type="submit" value="Back to Home" class="btn btn-primary" />
+            </div>
+        </form>
+    }
+</div>
