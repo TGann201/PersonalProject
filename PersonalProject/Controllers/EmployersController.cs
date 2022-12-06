@@ -336,7 +336,7 @@ namespace PersonalProject.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateEmployeeReview([Bind("EmployeeID", "PerformanceID")] Employee aEmployee, [Bind("EmployeeID,EmployerID,LearnValue,LearnNote,AdaptabilityValue,AdaptabilityNote,AttendanceValue,AttendanceNote,TeamworkValue,TeamworkNote")] Performance aPerformance)
+        public async Task<IActionResult> CreateEmployeeReview([Bind("EmployeeID", "PerformanceID", "EmployerID")] Employee aEmployee, [Bind("EmployeeID,EmployerID,LearnValue,LearnNote,AdaptabilityValue,AdaptabilityNote,AttendanceValue,AttendanceNote,TeamworkValue,TeamworkNote")] Performance aPerformance)
         {
             var user = await userManager.GetUserAsync(User);
             var id = user.Id;
